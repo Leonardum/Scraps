@@ -1,0 +1,2441 @@
+/* 
+CSS file, partly based on the Materialize framework:
+ * Materialize v0.97.7 (http://materializecss.com)
+ * Copyright 2014-2015 Materialize
+ * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+
+Table of contents:
+1. Computer- & laptop design
+    1.1.  General tags & important classes
+    1.2.  Home page and hover drop-down menus
+	1.3.  Terms of service page
+	1.4.  Main search page elements
+	1.5.  Event information overview box
+	1.6.  Large event overview layout
+    1.7.  Other special div tags
+    1.8.  Buttons
+	1.9.  Form elements
+    1.10. Messages and text links
+	1.11. Tables
+2. Tablet design
+	2.1.  General tags
+	2.2.  Home page
+    2.3.  Main dashboard elements
+	2.4.  Other special div tags
+    2.5.  Event information overview box
+	2.6.  Buttons
+3. Smart phone design
+*/
+
+/* Setting all HTML elements to have their box-sizing property set to border-box ensures that the padding and border are included in the total width and height of the elements. */
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* -----------------------------------------------------------------------------
+Colors
+------------------------------------------------------------------------------*/
+
+.black {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.white {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.whiteText{
+    color: rgba(255, 255, 255, 1);
+}
+
+.platina {
+	background-color: rgba(238, 229, 233, 1);
+}
+
+.platinaText{
+	color: rgba(238, 229, 233, 1);
+}
+
+.gold {
+	background-color: rgba(197, 179, 88, 1);
+}
+
+.goldText{
+	color: rgba(197, 179, 88, 1);
+}
+
+.pink {
+    background-color: rgba(255, 205, 149, 1);
+}
+
+.pinkText {
+    color: rgba(255, 205, 149, 1);
+}
+
+.green {
+    background-color: rgba(191, 255, 157, 1);
+}
+
+.greenText {
+    color: rgba(191, 255, 157, 1);
+}
+
+.red {
+    background-color: rgba(203, 62, 66, 1);
+}
+
+.redText {
+    color: rgba(203, 62, 66, 1);
+}
+
+
+/* -----------------------------------------------------------------------------
+1. Computer- & laptop design
+------------------------------------------------------------------------------*/
+
+.row {
+    width:100%;
+    position:relative;
+    *zoom: 1; /* For IE 6/7 only: Include this rule to trigger hasLayout and contain floats. */
+}
+
+/* The following pseudo classes are explained in: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.row:before,
+.row:after {
+    content: " ";
+    display: table;
+}
+
+.row:after {
+    clear: both;
+}
+
+
+/* Preparing the width of elements within one row. The screen width (of 100%) is divided into 24 colums. Each element in a row should then take one of the col classes below. If an element takes class "col-3", it means it is three colums wide. Therefore the sum of all elements in a row should always be 24. If it is less, there will be open space, if it is more, there will be a horizontal scroll bar. */
+@media only screen and (min-width: 993px) {
+    [class*="col-"] {
+		position: relative;
+		float: left;
+    }
+    /*
+    [class*='col-']:last-of-type {
+        padding-right: 0;
+    }
+    */
+    
+    .col-l1 {width: 8.33333%;}
+    .col-l2 {width: 16.66666%;}
+    .col-l3 {width: 25%;}
+    .col-l4 {width: 33.33333%;}
+    .col-l5 {width: 41.66666%;}
+    .col-l6 {width: 50%;}
+    .col-l7 {width: 58.33333%;}
+    .col-l8 {width: 66.66666%;}
+    .col-l9 {width: 75%;}
+    .col-l10 {width: 83.33333%;}
+    .col-l11 {width: 91.66666%;}
+    .col-l12 {width: 100%;}
+}
+
+
+/* -----------------------------------------------------------------------------
+1.1.  General tags & important classes
+----------------------------------------------------------------------------- */
+body {
+	margin: 0;
+    padding: 0;
+	background-color: rgba(238, 229, 233, 1);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:14px;
+    line-height:1.42857143; /* Since the font-size is 14 px and the desired line height (measured in pixels) is 20px (for Bootstrap), the line-height property is set to 20px / 14 px = 1,428571429. */
+}
+
+h1 {
+    color: rgba(238, 229, 233, 1);
+    font-size: 25px;
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    color: rgba(0, 0, 0, 1);
+    font-size: 18px;
+    margin: 0;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1) !important;
+}
+
+a.disabled {
+	cursor: default;
+    pointer-events: none;
+}
+
+/* One can change the bullets inside a list by declaring the list-style-type. The default value "list-style-type: disc" is not shown, once you change the display value of 'li' to anything else but 'list-item'. To make sure all the bullets in a list are shown properly, you can further declare:
+	list-style-position: inside;
+*/
+ul {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+/* In order to have lists display inline next to each other (beneficial for creating navigation menus) we use the CSS properties below. However in case you need a 'standard' list, you can override these properties locally by setting the following property and value:
+	display:list-item;
+*/
+li {
+	display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* The dropdown class should be applied on an element (div, span, li, ul) containing a) the dropdown button, b) the dropdown content div, c) the dropdown links (which could or could not be in a list structure) and d) the divider class, which is used to seperate the dropdown content into logical blocks. */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float: left;
+}
+
+/* The div containing all the elements which should be shown when hovered over or clicked on the dropdown button. The positioning is absolute, which makes it appear at the bottom of the dropdown element (unless top or bottom values are set) as long as it is placed under the triggering dropdown button. Left and right values can be used in order to further position the dropdown content, but beware: all relative values will refer to the parent element, which is the dropdown and since dropdown has no fixed width, the width is determined by the only visible element placed in it: the dropdown button or the dropdown image. Since the buttons' width is setermined by the text inside, a general value for left or right would make no sense. */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 300px; /* To make sure child elements "have some space". */
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 1; /* To make sure it is shown over the other content. */
+}
+
+/* The dropdown links, which will redirect you to another page when clicked, if their display is not set to block, then it will inherit the display of the parent, which has a display of "none". Even when the display of the parent changes, this doesn't change the display value of the kids, so therefore the display should be specified beforehand.
+Moreover, the "a" tag is an inline level element. Inline elements do not start on a new line and only take up as much width as necessary, whereas block-level elements always start on a new line and take up the full width available (stretches out to the left and right as far as it can). So in order to make the entire content of the <li> item a link, the a tags need to be displayed as block elements, not as an inline element. Inline-block elements are basically inline elements of which the width and the height CAN be set (unlike normal inline elements). Therefore, the same effect could be reached with inline-block value of the display property, but it would require the exact width and height to be set to fill up an entire <li> item. */
+.dropdown-content a,
+.dropdown-content li{
+    display: block;
+    margin: 0;
+}
+
+.dropdown-content li {
+    height: 30px;
+    padding: 0;
+}
+
+.dropdown-content a {
+    padding: 5px;
+    color: rgba(0, 0, 0, 1);
+    text-decoration: none;
+}
+
+/* CSS logic: if a link, which is the child of "dropdown-content" is hovered over, apply the following styling: */
+.dropdown-content a:hover {
+    background-color:  rgba(238, 229, 233, 1);
+}
+
+/* CSS logic: if the "dropdown" is hovered over, apply the following styling to the "dropdown-content", which is a child of the hovered over "dropdown": */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* CSS logic: if the "dropdown" is hovered over, apply the following styling to the "drop-button", which is a child of the hovered over "dropdown": */
+.dropdown:hover .drop-button {
+    background-color: rgba(24, 163, 164, 1);
+}
+
+/* The divider's display should also be set, just like the dropdown links' display value. */
+.divider {
+	display: block;
+	width: 100%;
+	height: 1px;
+	margin: 2% 0;
+	padding: 0px !important; /* To negate the padding of the .dropdown-content li */
+	background-color: rgba(231, 233, 236, 1);
+}
+
+
+/* -----------------------------------------------------------------------------
+1.2.  Home page and hover drop-down menus
+----------------------------------------------------------------------------- */
+
+/* The wrapper defined below here is by default 100% the hight as the viewport and 100% the width of the viewport. However, it will just extend further down if the content stretches beyond these measurements.
+Since a percentage measurement sizes all elements to the given percentage of the containing block, I can now express the measurements of every content block as a percentage of the viewport and the measurements of the content blocks within as a percentage of the containing percentage of the viewport. If I exceed a total of 100% in height, the screen will get a vertical scroll bar. If I exceed 100% in width, I will get a horizontal scroll bar (which should definitely be avoided at all times)!
+The huge advantage of this is that it can make all the elements both proportionate and responsive corresponding to the viewport size, as long as they can be consistently expressed in percentages! Another huge advantage is that you can narrow the width of all your content on the page very easily by reducing the width of the wrapper by a certain percentage. If you then want to centre the content, simply add a left property for half of this percentage [e.g.: if you reduced the width of the wrapper by 20% (so set to 80%), then you add a left property of 10% to centre it all]. */
+#wrapper {
+    position:absolute;
+    min-height: 100%;
+    max-width: 100%;
+	height: 100%;
+    width: 100%;
+    z-index: -2;
+}
+
+#wrapper:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.slideshow-container {
+    position: absolute;
+    /* Set up proportionate scaling compared to the containing block, which is in this case the wrapper and the wrapper is 100% the height and width of the viewport. */
+    width: 100%;
+    height: 100%;
+    /* Put the image in the background. A z-index only works on positioned elements (position:absolute, position:relative, or position:fixed). */
+    z-index: -1;
+    overflow: hidden;
+}
+
+.slide {
+    position: relative;
+    display: none; /* Hide the images by default */
+    height: 100%;
+    width: 100%;
+}
+
+.slide img {
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 6%;
+    width: 60%;
+    left: 50%;
+    margin-left: -30%;
+    z-index: 0;
+    padding-left: 0;
+    text-align: center;
+    list-style: none;
+}
+
+.carousel-indicators div {
+    position: relative;
+    display:inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin: 0 0.5rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(238, 229, 233, 1);
+    border-radius: 1rem;
+    cursor: pointer;
+    z-index: 0;
+}
+
+.carousel-indicators .active {
+    background-color: rgba(238, 229, 233, 1);
+}
+
+.dot:hover {
+    background-color: #717171;
+}
+
+.start {
+    display: block;
+}
+
+/* Effect to move the next slide in for the carousel. */
+
+.next {
+    position: relative;
+    display: block;
+    z-index: -1;
+    -webkit-animation-name: slide-in;
+    -webkit-animation-duration: 1.5s;
+    animation-name: slide-in;
+    animation-duration: 1.5s;
+    
+}
+
+@-webkit-keyframes slide-in {
+    from {
+        margin-left: 100%;
+        margin-right: -100%;
+    }
+    
+    to {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        margin-left: 100%;
+        margin-right: -100%;
+    }
+    
+    to {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* Effect to move the previous (or current) slide out for the carousel. */
+
+.previous {
+    position: absolute;
+    display: block;
+    top: 0;
+    z-index: -2;
+    -webkit-animation-name: slide-out;
+    -webkit-animation-duration: 1.5s;
+    animation-name: slide-out;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes slide-out {
+    from {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    to {
+        margin-left: -100%;
+        margin-right: 100%;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    to {
+        margin-left: -100%;
+        margin-right: 100%;
+    }
+}
+
+/* Effect to fade-in in the next slide for a slide show transition. */
+
+.fade-in {
+    position: relative;
+    display: block;
+    z-index: -1;
+    -webkit-animation-name: fade-in;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade-in;
+    animation-duration: 1.5s;
+    
+}
+
+@-webkit-keyframes fade-in {
+    from {
+        opacity: 0.4;
+    }
+    
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0.4;
+    }
+    
+    to {
+        opacity: 1;
+    }
+}
+
+/* So-called alternative "effect" to simply make the next slide in the slide show appear. */
+
+.appear {
+    position: relative;
+    display: block;
+    z-index: -1;
+}
+
+#header {
+	position: relative;
+    width: 100%;
+    height: 8%;
+	background-color: rgba(0, 0, 0, 0);
+    display: block;
+}
+
+#headerImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Set up proportionate scaling compared to the containing block, which is in this case the wrapper and the wrapper is 100% the height and width of the viewport. */
+    width: 100%;
+    height: 100%;
+    /* Put the image in the background. A z-index only works on positioned elements (position:absolute, position:relative, or position:fixed). */
+    z-index: -1;
+}
+
+#logo {
+    position: relative;
+    margin: 0.75% 0% 0% 3%;
+    float: left;
+	height: 85%;
+}
+
+#logo img {
+    height: 100%;
+}
+
+#navbar {
+    position: relative;
+    height: 100%;
+    margin-left: 2%;
+    display: inline-block;
+    float: left;
+}
+
+.homepageTitle {
+	position: absolute;
+	width: 100%;
+	top: 5%;
+	text-align: center;
+	color: rgba(197, 179, 88, 1);
+	font-size: 100px;
+	font-weight: 700;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+.homepageSubTitle {
+	position: absolute;
+	width: 100%;
+	top: 28%;
+	text-align: center;
+	color: rgba(255, 255, 255, 1);
+	text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+.topShadow {
+	-webkit-box-shadow: 0px -5px 30px 0px rgba(238, 229, 233, 1);
+	-moz-box-shadow: 0px -5px 30px 0px rgba(238, 229, 233, 1));
+	box-shadow: 0px -5px 30px 20px rgba(238, 229, 233, 1);
+}
+
+.homeContent {
+	position: absolute;
+	width: 100%;
+	top: 100%;
+}
+
+.valuePropositionBox {
+	padding: 50px 40px;
+    height: 400px;
+}
+
+.valuePropositionTitle {
+    text-align: center;
+    font-size: 26px;
+	font-weight: 700;
+	letter-spacing: 1px;
+    margin: 0px 0 30px 0;
+}
+
+.valuePropositionParagraph {
+    text-align: center;
+    margin: 0px 0 30px 0;
+}
+
+.valuePropositionButtonFrame {
+    position:absolute;
+    top:70%;
+    left:50%;
+}
+
+.valuePropositionButton {
+    position:relative;
+    left:-50%;
+}
+
+.footer {
+	background-color: rgba(51, 51, 51, 1);
+}
+
+.footer p {
+	padding: 15px 0;
+	color: rgba(238, 229, 233, 1);
+	text-align: center;
+}
+
+
+/* -----------------------------------------------------------------------------
+1.3.  Terms of service page
+----------------------------------------------------------------------------- */
+
+.termsContent {
+	margin-left: 50px;
+}
+
+.termsTitle {
+	margin: 30px 0;
+	text-align: center;
+}
+
+.termsSubTitle {
+	margin: 40px 0 20px 0;
+}
+
+.termsList {
+    font-size: 18px;
+	display: list-item;
+}
+
+.termsLevelOne {
+	margin: 0 0 1rem 1rem;
+	padding-top: 0.5rem;
+}
+
+.termsLevelTwo {
+	margin: 0 0 1rem 2rem;
+	padding-top: 0.5rem;
+}
+
+.termsLevelThree {
+	margin: 0 0 1rem 3rem;
+	padding-top: 0.5rem;
+}
+
+.termsLevelFour {
+	margin: 0 0 1rem 4rem;
+	padding-top: 0.5rem;
+}
+
+.termsLevelFive {
+	margin: 0 0 1rem 5rem;
+	padding-top: 0.5rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+1.4.  Calendar page elements
+----------------------------------------------------------------------------- */
+
+div.calendar {
+    width: 80%;
+    height: 600px;
+    margin: auto;
+}
+
+div.month {
+    display: table;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+}
+
+div.prevnext {
+    display: table-cell;
+    width: 15%;
+    vertical-align: middle;
+    margin: auto;
+}
+
+div.prevnext:hover {
+    cursor: pointer;
+}
+
+div.monthYear {
+    display: table-cell;
+    width: 70%;
+    vertical-align: middle;
+    font-size: 26px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+div.weekdays {
+    display: table;
+    overflow: hidden;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+}
+
+div.weekday {
+    display: table-cell;
+    width: 14.2857142857%;
+    vertical-align: middle;
+    background-color: rgba(51, 51, 51, 1);
+    color: rgba(238, 229, 233, 1);
+}
+
+div.days {
+    width: 100%;
+    overflow: auto; /* To make sure the dib height is automatically adjusted to what the height of the child divs are. */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+div.day {
+    position: relative;
+    width: 14.2857142857%;
+    float: left;
+    height: 80px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: rgba(51, 51, 51, 1);
+}
+
+div.day:after {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 5px;
+    height: 5px;
+    border: solid;
+    border-width: 0 2px 2px 0;
+    border-color: rgba(238, 229, 233, 1);
+    content: ' ';
+}
+
+
+div.day:hover {
+    border: 0.1px solid rgba(51, 51, 51, 1);
+    cursor: pointer;
+}
+
+div.day.active {
+    border: 2px solid rgba(197, 179, 88, 1);
+}
+
+div.day.active:after {
+    border: none;
+}
+
+
+/* -----------------------------------------------------------------------------
+1.4.  Main search page elements
+----------------------------------------------------------------------------- */
+
+div.left-sidebar {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	padding: 20px;
+	background-color: rgba(51, 51, 51, 1);
+	z-index: -2; /* To make sure dropdown menus are covering this sidebar. */
+	overflow: auto;
+}
+
+/* In case one of the elements is wider than the sidebar, make sure that there is a formatted scroll bar in the bottom and that the element does not extend into the content display area */
+div.left-sidebar::-webkit-scrollbar {
+    width: 12px;
+}
+
+div.left-sidebar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 5px;
+}
+
+div.left-sidebar::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+div.middle-column {
+	margin-left: 20%;
+	z-index: -1; /* To make sure the content is clickable (since it also has a z-index of -1. */
+}
+
+div.navigation {
+	position: fixed;
+	height: 70px;
+	width: 80%; /* width has to be set, since fixed elements are anchored to the browser window, not to their parent elements. So it doesn't adopt any width automatically and when set will be in proportion towards the window. */
+	background-color: rgba(0, 0, 0, 1);
+	padding: 15px 0;
+}
+
+div.content {
+	/* display: -webkit-box;   OLD - iOS 6-, Safari 3.1-6 (Issues with safari) */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* Chrome & Safari */
+	display: flex;
+	flex-direction: column;
+	margin-top: 70px;
+	padding: 20px 10px 10px 10px !important;
+	z-index: -1; /* To make sure notifications and settings are covering the content. */
+}
+
+
+/* -----------------------------------------------------------------------------
+1.5.  Event information overview box
+----------------------------------------------------------------------------- */
+
+.masonry {
+	-webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+	column-gap: 1rem;
+	padding-right: 1rem;
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+    .masonry {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+		padding-right: 1rem;
+    }
+}
+
+.eventBox {
+	display: inline-block;
+	margin-bottom: 1rem;
+    width: 100%;
+	padding: 20px;
+	background-color: rgba(238, 229, 233, 1);
+	word-wrap: break-word;
+}
+
+.eventBox p.name {
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+	font-weight: 700;
+	text-align: center;
+    color: rgba(197, 179, 88, 1)
+}
+
+.eventBox div.dpPic {
+	position: relative;
+	width: calc(100% + 40px);
+	height: 250px;
+	margin: 0 20px 0 -20px;
+}
+
+.eventBox img.dpPic {
+	position: absolute;
+	width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.eventBox div.kitchen {
+	margin: 0 auto 0.5rem auto;
+	padding: 10px;
+	border-bottom: 1px solid rgba(238, 229, 233, 0.3);
+}
+
+.eventBox div.kitchen p {
+	color: rgba(29, 51, 92, 1);
+	font-size: 16px;
+	text-align: center;
+}
+
+.eventBox div.addressBox {
+	margin: 0 auto 0.3rem auto;
+	padding: 10px;
+}
+
+.eventBox div.addressBox p {
+	color: rgba(29, 51, 92, 1);
+	font-size: 16px;
+}
+
+.eventBox div.sponsors {
+	padding: 10px;
+	border-top: 1px solid rgba(238, 229, 233, 0.3);
+	text-align: center;
+}
+
+.eventBox div.sponsors p {
+	margin-bottom: 5px;
+	color: rgba(29, 51, 92, 1);
+	font-size: 16px;
+	text-align: center;
+}
+
+div.inbev {
+	position: relative;
+	display: inline-block;
+	margin: 2%;
+	width: 40px;
+	height: 40px;
+}
+
+img.inbev {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+div.hoegaarden {
+	position: relative;
+	display: inline-block;
+	margin: 2%;
+	width: 100px;
+	height: 40px;
+}
+
+img.hoegaarden {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.eventBox div.reservation {
+	text-align: center;
+}
+
+/* -----------------------------------------------------------------------------
+1.7.  Other special div tags
+----------------------------------------------------------------------------- */
+
+/* Coockie warning div. */
+.cookieWarning {
+	position: fixed;
+	z-index: 3;
+	width: 100%;
+	top: 85%;
+	height: 10%;
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+.cookieWarning p {
+	padding-top: 1.5%;
+	color: rgba(238, 229, 233, 1);
+	text-align: center;
+}
+
+.cookieAcceptButton {
+	position: absolute;
+	top: 20%;
+	right: 10%;
+	border-radius: 5px !important;
+	background-color: rgba(245, 245, 0, 1) !important;
+	color: rgba(0, 0, 0, 1) !important;
+}
+
+
+.lone-message {
+	padding: 20px !important;
+	float: none !important; /* To make sure margin: auto works. */
+	margin: 50px auto;
+	background-color: rgba(238, 229, 233, 1);
+}
+
+
+/* -----------------------------------------------------------------------------
+1.8.  Buttons
+----------------------------------------------------------------------------- */
+
+button,
+input[type=submit] {
+    position: relative;
+    display: inline;
+    zoom: 1; *display: inline;
+	min-width: 100px;
+    padding: 15px 15px;
+    background-color: rgba(197, 179, 88, 1);
+    border: 1px solid transparent;
+    color: rgba(238, 229, 233, 1);
+    outline: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+button:hover,
+input[type=submit]:hover {
+    cursor: pointer;
+    background-color: rgba(238, 229, 233, 1);
+    border: 1px solid rgba(197, 179, 88, 1);
+    color: rgba(197, 179, 88, 1);
+}
+
+.oval {
+    width: 180px;
+    border-radius: 50%;
+}
+
+
+/* -----------------------------------------------------------------------------
+1.9.  Form elements
+----------------------------------------------------------------------------- */
+
+/* Formatting of the div containing user inputs and potentially the labels. */
+.userInput {
+	position: relative;
+	margin: 0;
+	padding-top: 1rem;
+	display: block;
+}
+
+/* --------------------------------- Input ---------------------------------- */
+
+input:not([type]),
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=tel],
+input[type=number],
+input[type=search] {
+	width: 100%;
+	height: 3rem;
+	padding-left: 3px;
+	outline: none; /* Removes the standard "border" of the input. */
+	border: 0.1px solid rgba(51, 51, 51, 1);
+	background-color: rgba(238, 229, 233, 1);
+	font-size: 1rem;
+	transition: all 0.3s;
+}
+
+input::placeholder {
+	font-size: 1em;
+}
+
+/* Formatting of the SELECTED input boxes. */
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea:focus:not([readonly]) {
+	border: 0.1px solid rgba(197, 179, 88, 1);
+	box-shadow: 0 0 0 0.5px rgba(197, 179, 88, 1);
+}
+
+/* Formatting of the VALID input boxes. */
+input:not([type]).valid,
+input:not([type]):focus.valid,
+input[type=text].valid,
+input[type=text]:focus.valid,
+input[type=password].valid,
+input[type=password]:focus.valid,
+input[type=email].valid,
+input[type=email]:focus.valid,
+input[type=url].valid,
+input[type=url]:focus.valid,
+input[type=tel].valid,
+input[type=tel]:focus.valid,
+input[type=number].valid,
+input[type=number]:focus.valid,
+input[type=search].valid,
+input[type=search]:focus.valid,
+textarea.valid,
+textarea:focus.valid {
+	border: 1px solid rgba(34, 139, 34, 1);
+	box-shadow: 0 0 0 0.5px rgba(34, 139, 34, 1);
+}
+
+/* Formatting of the INVALID input boxes. */
+input:not([type]).invalid,
+input:not([type]):focus.invalid,
+input[type=text].invalid,
+input[type=text]:focus.invalid,
+input[type=password].invalid,
+input[type=password]:focus.invalid,
+input[type=email].invalid,
+input[type=email]:focus.invalid,
+input[type=url].invalid,
+input[type=url]:focus.invalid,
+input[type=tel].invalid,
+input[type=tel]:focus.invalid,
+input[type=number].invalid,
+input[type=number]:focus.invalid,
+input[type=search].invalid,
+input[type=search]:focus.invalid,
+textarea.invalid,
+textarea:focus.invalid {
+	border: 1px solid rgba(204, 0, 0, 1);
+	box-shadow: 0 0 0 0.5px rgba(204, 0, 0, 1);
+}
+
+/* ------------------------------ Select Field ------------------------------ */
+
+/* Selects should not display, but in cae the browser displays them, make sure there is some formatting. */
+select {
+	display: none;
+	width: 100%;
+	height: 3rem;
+	padding-left: 3px;
+	outline: none; /* Removes the standard "border" of the input. */
+	border: 0.1px solid rgba(51, 51, 51, 1);
+	background-color: rgba(238, 229, 233, 1);
+	font-size: 1rem;
+	transition: all 0.3s;
+}
+
+select.browser-default {
+	display: block;
+}
+
+/* Make sure that the visual select and the actual select are displayed together in case the actual select is showing. */
+.select-wrapper {
+	position: relative;
+}
+
+/* Extra formatting of the select inputs. */
+input[type=text].selectInput {
+	position: relative;
+	display: block;
+	margin: 0;
+	line-height: 3rem;
+	cursor: pointer;
+}
+
+.select-wrapper span.caret {
+	color: initial;
+	position: absolute;
+	right: 3px;
+	top: 18px;
+	font-size: 10px;
+	z-index: 1; /* To make sure it is not hidden by the select itself. */
+}
+
+.select-dropdown {
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	border: 0.1px solid rgba(197, 179, 88, 1);
+	-webkit-box-shadow: 0 0 0 0.5px rgba(197, 179, 88, 1);
+	-moz-box-shadow: 0 0 0 0.5px rgba(197, 179, 88, 1);
+	box-shadow: 0 0 0 0.5px rgba(197, 179, 88, 1);
+	z-index: 2; /* To make sure it is shown over the caret of other selects. */
+}
+
+/* -------------------------------- Textarea -------------------------------- */
+
+textarea {
+	resize: none;
+	width: 100%;
+	padding-left: 3px;
+    outline: none;
+	border: 0.1px solid rgba(51, 51, 51, 1);
+	font-size: 1em;
+}
+
+textarea::placeholder {
+	padding-top: 1em;
+	font-size: 1.2em;
+	text-align: center;
+}
+
+/* -------------------------------- Checkbox -------------------------------- */
+
+/* Make sure that the check box and the check box text are displayed together. */
+.checkboxWrapper {
+	position: relative;
+}
+
+input[type=checkbox] {
+	-ms-transform: scale(1.3); /* IE */
+	-moz-transform: scale(1.3); /* FF */
+	-webkit-transform: scale(1.3); /* Safari and Chrome */
+	-o-transform: scale(1.3); /* Opera */
+	cursor: pointer;
+}
+
+.userInput input[type=checkbox] {
+	margin: 10px 0 10px 3px;
+}
+
+.checkboxText {
+	font-size: 1rem;
+	margin-left: 0.5rem;
+	color: rgba(238, 229, 233, 1);
+	cursor: pointer;-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* ------------------------------- Datepicker ------------------------------- */
+
+div.ui-datepicker{
+	font-size: 12px;
+}
+
+/* --------------------------------- Slider --------------------------------- */
+
+#slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    height: 25px;
+	margin: 0;
+	padding: 0;
+	border: none;
+    outline: none; /* Remove outline */
+    background: rgba(51, 51, 51, 0.5);
+	background-color: rgba(238, 229, 233, 1);
+}
+
+/* The slider handle (use webkit (Chrome, Opera, Safari, Edge) and moz (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px;
+    height: 25px;
+	border-radius: 50%;
+    background: rgba(203, 62, 66, 1);
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+	border-radius: 50%;
+	border-color: rgba(203, 62, 66, 1);
+	background: rgba(203, 62, 66, 1);
+}
+
+.slider::-moz-range-track {
+	visibility: hidden;
+}
+
+.slider:hover {
+    cursor: pointer;
+    background: rgba(51, 51, 51, 0.7);
+	background-color: rgba(238, 229, 233, 1);
+}
+
+#price {
+    font-size: 26px;
+	font-weight: 700;
+	color: rgba(0, 0, 0, 1);
+	text-transform: uppercase;
+}
+
+/* --------------------------------- Label ---------------------------------- */
+
+/* Formatting of the LABELS of the UNSELECTED user inputs. */
+.userInput label {
+	color: rgba(113, 116, 120, 1);
+	position: absolute;
+	top: 0rem;
+	left: 0rem;
+	font-size: 1rem;
+	cursor: text;
+	transition: .2s ease-out;
+}
+
+/* Formatting of the LABELS of the SELECTED input boxes. */
+input:not([type]):focus:not([readonly]) ~ label,
+input[type=text]:focus:not([readonly]) ~ label,
+input[type=password]:focus:not([readonly]) ~ label,
+input[type=email]:focus:not([readonly]) ~ label,
+input[type=url]:focus:not([readonly]) ~ label,
+input[type=tel]:focus:not([readonly]) ~ label,
+input[type=number]:focus:not([readonly]) ~ label,
+input[type=search]:focus:not([readonly]) ~ label,
+textarea:focus:not([readonly]) ~ label {
+	color: rgba(24, 163, 164, 1);
+	/* The following values are set to transition the labels inside text boxes from being a placeholder to being a label:
+	top: 0;
+	left: 0; */
+}
+
+/* Formatting of the LABELS of the VALID input boxes. */
+input:not([type]).valid ~ label,
+input:not([type]):focus.valid ~ label,
+input[type=text].valid ~ label,
+input[type=text]:focus.valid ~ label,
+input[type=password].valid ~ label,
+input[type=password]:focus.valid ~ label,
+input[type=email].valid ~ label,
+input[type=email]:focus.valid ~ label,
+input[type=url].valid ~ label,
+input[type=url]:focus.valid ~ label,
+input[type=tel].valid ~ label,
+input[type=tel]:focus.valid ~ label,
+input[type=number].valid ~ label,
+input[type=number]:focus.valid ~ label,
+input[type=search].valid ~ label,
+input[type=search]:focus.valid ~ label,
+textarea.valid ~ label,
+textarea:focus.valid ~ label {
+	color: rgba(34, 139, 34, 1);
+}
+
+/* Formatting of the LABELS of the INVALID input boxes. */
+input:not([type]).invalid ~ label,
+input:not([type]):focus.invalid ~ label,
+input[type=text].invalid ~ label,
+input[type=text]:focus.invalid ~ label,
+input[type=password].invalid ~ label,
+input[type=password]:focus.invalid ~ label,
+input[type=email].invalid ~ label,
+input[type=email]:focus.invalid ~ label,
+input[type=url].invalid ~ label,
+input[type=url]:focus.invalid ~ label,
+input[type=tel].invalid ~ label,
+input[type=tel]:focus.invalid ~ label,
+input[type=number].invalid ~ label,
+input[type=number]:focus.invalid ~ label,
+input[type=search].invalid ~ label,
+input[type=search]:focus.invalid ~ label,
+textarea.invalid ~ label,
+textarea:focus.invalid ~ label {
+	color: rgba(204, 0, 0, 1);
+}
+
+
+/* -----------------------------------------------------------------------------
+1.10. Messages and text links
+----------------------------------------------------------------------------- */
+
+.lightWatermark {
+	color: rgba(231, 233, 236, 1);
+	text-align: center;
+	font-size: 30px;
+	padding: 50px 0 50px 0;
+}
+
+.darkWatermark {
+	color: rgba(120, 144, 156, 1);
+	text-align: center;
+	font-size: 30px;
+	padding: 50px 0 50px 0;
+}
+
+.success {
+	color: rgba(34, 139, 34, 1);
+}
+
+.error {
+    color: rgba(204, 100, 100, 1);
+}
+
+.error.fade {
+	-webkit-animation-name: fade;
+    -webkit-animation-iteration-count: once;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 5s;
+	-webkit-animation-fill-mode: forwards;
+    animation-name: fade;
+    animation-iteration-count: once;
+    animation-timing-function: ease-out;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes fade {
+    0% {color: rgba(204, 0, 0, 1);}
+    100% {color: rgba(231, 233, 236, 0);}
+}
+
+@-webkit-keyframes fade {
+    0% {color: rgba(204, 0, 0, 1);}
+    100% {color: rgba(231, 233, 236, 0);}
+}
+
+@-moz-keyframes fade {
+    0% {color: rgba(204, 0, 0, 1);}
+    100% {color: rgba(231, 233, 236, 0);}
+}
+
+.instructionTitle {
+	margin: 5px 0 3px 0;
+    font-size: 14px;
+}
+
+.charCountDown {
+	margin-left: 275px;
+	font-size: 11px;
+	color: rgba(113, 116, 120, 1);
+}
+
+.textLink,
+.textLink:visited {
+	text-decoration: underline;
+	margin: 0 10px 0 10px;
+}
+
+.textLink:hover {
+	text-decoration: underline;
+    color: rgba(197, 179, 88, 1) !important;
+}
+
+.tickBoxText {
+	font-size: 14px;
+}
+
+
+/* -----------------------------------------------------------------------------
+1.11. Tables
+----------------------------------------------------------------------------- */
+
+.customTable {
+	display: table;
+	width: 100%;
+	margin-bottom: 20px;
+	border: none;
+	border-collapse: collapse;
+	border-spacing: 0;
+	-webkit-box-shadow: 2px 5px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 2px 5px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 2px 5px 5px 0px rgba(0,0,0,0.75);
+	border-collapse: separate; /* In order to have a box shadow on tables in IE and Edge. */
+}
+
+.customTable thead {
+	border-bottom: 1px solid black;
+}
+
+.customTable td, th {
+	padding: 15px 5px;
+	display: table-cell;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.customTable > tbody > tr:nth-child(odd) {
+	background-color: rgba(191, 191, 208, 1);
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+2. Tablet design
+----------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+	[class*="col-"] {
+        position: relative;
+        float: left;
+        width: 100%;
+    }
+    
+    .col-m1 {width: 8.33333%;}
+    .col-m2 {width: 16.66666%;}
+    .col-m3 {width: 24.99999%;}
+    .col-m4 {width: 33.33333%;}
+    .col-m5 {width: 41.66666%;}
+    .col-m6 {width: 50%;}
+    .col-m7 {width: 58.33333%;}
+    .col-m8 {width: 66.66666%;}
+    .col-m9 {width: 74.99999%;}
+    .col-m10 {width: 83.33333%;}
+    .col-m11 {width: 91.66666%;}
+    .col-m12 {width: 100%;}
+    
+	
+	/* -------------------------------------------------------------------------
+	2.1.  General tags
+	------------------------------------------------------------------------- */
+	
+	h1 {
+		font-size: 25px;
+	}
+
+	h2 {
+		font-size: 16px;
+	}
+
+	p {
+		font-size: 18px;
+	}
+	
+	
+	/* -------------------------------------------------------------------------
+	2.2.  Home page
+	------------------------------------------------------------------------- */
+	
+	.homepageTitle {
+		top: 10%;
+		font-size: 35px;
+	}
+    
+	.homepageSubTitle {
+		font-size: 21px;
+		letter-spacing: 0;
+		top: 30%;
+	}
+	
+	@media only screen and (min-width: 700px) {
+		.homepageTitle {
+			font-size: 40px;
+		}
+		
+		.homepageSubTitle {
+			font-size: 24px;
+		}
+	}
+	
+	.organiserRow {
+		display: -moz-box;		/* OLD - Firefox 19- (buggy but mostly works) */
+		display: -ms-flexbox;	/* TWEENER - IE 10 */
+		display: -webkit-flex;	/* Chrome & Safari */
+		display: flex;
+		flex-direction: column;
+	}
+    
+	.homeVideo {
+		width: 80%;
+		margin: 25px 0 0 10%;
+	}
+	
+	
+	/* -------------------------------------------------------------------------
+	2.3.  Main dashboard elements
+	------------------------------------------------------------------------- */
+	
+	div.left-sidebar {
+		display: none;
+		width: 30%;
+		z-index: 2;
+	}
+	
+	@media only screen and (max-width: 710px) {
+		
+		p.userName {
+			font-size: 18px;
+		}
+		
+		div.profilePicture {
+			width: 145px;
+			height: 145px;
+		}
+	}
+	
+	div.middle-column {
+		margin-left: 0%;
+	}
+	
+	div.navigation {
+		width: 100%; /* width has to be set, since fixed elements are anchored to the browser window, not to their parent elements. So it doesn't adopt any width automatically and when set will be in proportion towards the window. */
+	}
+	
+	div.roleSelect {
+		width: 70%;
+	}
+	
+	button.roleSelector-button {
+		display: block;
+	}
+	
+	.roleSelectorIcon {
+		display: none;
+	}
+	
+	img.menuBars {
+		display: block;
+		margin: -5px 10px 0 0;
+		cursor: pointer;
+	}
+	
+	div.management-box {
+		width: 30%;
+	}
+	
+	.notification-dropdown-content {
+		left: -200px;
+	}
+	
+	.notification-dropdown-content:before {
+		left: 195px;
+	}
+	
+	.setting-dropdown-content {
+		left: -200px;
+	}
+
+	.setting-dropdown-content:before {
+		left: 230px;
+	}
+	
+	
+	/* -------------------------------------------------------------------------
+	2.4.  Other special div tags
+	------------------------------------------------------------------------- */
+	
+	div.sidebarContent {
+		width: 80% !important;
+		float: left;
+	}
+	
+	div.contentSidebar {
+		width: 20% !important;
+		float: left;
+		
+	}
+	
+	.skillBox {
+		width: 98px;
+		height: 98px;
+	}
+	
+	.skillBox p {
+		font-size: 0.8rem;
+	}
+	
+	.eventCounter {
+		font-size: 0.8rem;
+	}
+	
+	.tickBoxText {
+		font-size: 12px;
+	}
+	
+	
+	/* -------------------------------------------------------------------------
+	2.5.  Event information overview box
+	------------------------------------------------------------------------- */
+	
+	.masonry {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+		column-gap: 1rem;
+		padding-right: 1rem;
+	}
+	
+	@media only screen and (max-width: 700px) {
+		.eventBox p.title {
+			font-size: 1rem;
+		}
+
+		.eventBox p.type {
+			font-size: 0.8rem;
+		}
+
+		.eventBox div.logoBox {
+			width: 70px;
+			height: 70px;
+		}
+
+		.eventBox p.organiser {
+			font-size: 1rem;
+		}
+
+		.eventBox div.skillsBox p.skillAnnounce {
+			font-size: 1rem;
+		}
+		
+		.eventBox div.skillsBox p.skill {
+			font-size: 0.8rem;
+			letter-spacing: 0;
+		}
+
+		.attendingBox {
+			font-size: 0.7rem;
+			letter-spacing: 0;
+		}
+		
+		.eventBox div.ratingRow p {
+			font-size: 0.8rem;
+		}
+		
+		.eventBox div.descriptionRow p {
+			font-size: 0.8rem;
+		}
+
+		.eventBox div.timeRow p {
+			font-size:  0.8rem;
+		}
+		
+		.eventBox div.addressBox p {
+			font-size: 0.8rem;
+		}
+
+		.eventBox div.sponsorsRow p {
+			font-size: 0.8rem;
+		}
+		
+		div.sponsorSmallLogo {
+			width: 43px;
+			height: 43px;
+		}
+	}
+	
+	
+	/* -------------------------------------------------------------------------
+	2.6.  Buttons
+	------------------------------------------------------------------------- */
+	
+	button,
+	input[type=submit] {
+		min-width: 50px;
+		padding: 10px 10px;
+		font-size: 10px;
+	}
+	
+	@media only screen and (max-width: 790px) {
+		button,
+		input[type=submit] {
+			min-width: 60px;
+			padding: 10px 5px;
+			font-size: 7px;
+		}
+	}
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+3. Smart phone design
+----------------------------------------------------------------------------- */
+
+@media only screen and (max-width: 600px) {
+    [class*="col-"] {
+        position: relative;
+        float: left;
+        width: 100%;
+    }
+    
+    .col-s1 {width: 8.33333%;}
+    .col-s2 {width: 16.66666%;}
+    .col-s3 {width: 24.99999%;}
+    .col-s4 {width: 33.33333%;}
+    .col-s5 {width: 41.66666%;}
+    .col-s6 {width: 50%;}
+    .col-s7 {width: 58.33333%;}
+    .col-s8 {width: 66.66666%;}
+    .col-s9 {width: 74.99999%;}
+    .col-s10 {width: 83.33333%;}
+    .col-s11 {width: 91.66666%;}
+    .col-s12 {width: 100%;}
+    
+	
+	/* -------------------------------------------------------------------------
+	3.1.  General tags
+	------------------------------------------------------------------------- */
+	
+	h1 {
+		font-size: 18px;
+	}
+
+	h2 {
+		font-size: 16px;
+	}
+
+	p {
+		font-size: 12px;
+	}
+	
+	
+	/* -------------------------------------------------------------------------
+	3.2.  Home page
+	------------------------------------------------------------------------- */
+	
+	.homepageTitle {
+		top: 10%;
+		font-size: 19px;
+		letter-spacing: 0;
+	}
+	
+	.homepageSubTitle {
+		font-size: 11px;
+		letter-spacing: 0;
+		top: 25%;
+	}
+	
+	@media only screen and (min-width: 250px) {
+		.homepageTitle {
+			font-size: 22px;
+		}
+
+		.homepageSubTitle {
+			font-size: 12px;
+			top: 28%;
+		}
+	}
+	
+	@media only screen and (min-width: 300px) {
+		.homepageTitle {
+			font-size: 24px;
+		}
+
+		.homepageSubTitle {
+			font-size: 14px;
+			top: 28%;
+		}
+	}
+	
+	@media only screen and (min-width: 400px) {
+		.homepageTitle {
+			font-size: 30px;
+		}
+
+		.homepageSubTitle {
+			font-size: 16px;
+		}
+	}
+	
+	@media only screen and (min-width: 500px) {
+		.homepageTitle {
+			font-size: 35px;
+		}
+
+		.homepageSubTitle {
+			font-size: 19px;
+		}
+	}
+	
+	.organiserRow {
+		display: -moz-box;		/* OLD - Firefox 19- (buggy but mostly works) */
+		display: -ms-flexbox;	/* TWEENER - IE 10 */
+		display: -webkit-flex;	/* Chrome & Safari */
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.valuePropositionBox {
+		height: 530px;
+	}
+	
+	.valuePropositionTitle {
+		font-size: 16px;
+		margin: 10% 0 15% 0;
+	}
+	
+	@media only screen and (min-width: 480px) {
+		.valuePropositionTitle {
+			margin: 10% 0 10% 0;
+		}
+	}
+	
+	.valuePropositionRow {
+		height: 200px;
+		display: -moz-box;		/* OLD - Firefox 19- (buggy but mostly works) */
+		display: -ms-flexbox;	/* TWEENER - IE 10 */
+		display: -webkit-flex;	/* Chrome & Safari */
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.valuePropSubRow {
+		width: 100%;
+		height: 100px;
+	}
+	
+	@media only screen and (min-width: 480px) {
+		.homePageIconCol {
+			width: 25%;
+		}
+	}
+	
+	.homePageIconFrame {
+		width: 50px;
+		height: 50px;
+		top: 0;
+		left: 10%;
+	}
+	
+	@media only screen and (min-width: 300px) {
+		.homePageIconFrame {
+			width: 50px;
+			height: 50px;
+			top: 0;
+			left: 20%;
+		}
+	}
+	
+	.homePageTextCol {
+		width: 60%;
+		margin-left: 5%;
+	}
+	
+	@media only screen and (min-width: 300px) {
+		.homePageTextCol {
+			width: 65%;
+			margin-left: 0;
+		}
+	}
+	
+	@media only screen and (min-width: 480px) {
+		.homePageTextCol {
+			width: 75%;
+		}
+	}
+	
+	.homeIconTextFrame {
+		height: 50px;
+	}
+	
+	.homeIconTextDiv {
+		height: 50px;
+	}
+	
+	@media only screen and (min-width: 250px) {
+		.homeIconTextDiv p {
+			font-size: 14px;
+		}
+	}
+	
+	@media only screen and (min-width: 300px) {
+		.homeIconTextDiv p {
+			font-size: 16px;
+		}
+	}
+	
+	@media only screen and (min-width: 480px) {
+		.homeIconTextDiv p {
+			font-size: 18px;
+		}
+	}
+	
+	.callToActionBox {
+		height: 250px;
+	}
+	
+	.callToActionImg {
+		width: 90px;
+		height: auto;
+	}
+
+	.homeVideo {
+		width: 80%;
+		margin: 0 0 0 10%;
+	}
+	
+	.videoRow {
+		margin-bottom: 50px;
+	}
+	
+	/* The blue bands on the partner div tag are made with the before and after pseude selectors. */
+	.partners:before,
+	.partners:after {
+		height: 60px;
+	}
+	
+	.partners p {
+		font-size: 16px;
+		margin-top: 5px;
+		margin-bottom: 25px;
+	}
+	
+	.partnerLogoContainer {
+		margin: 0 auto;
+	}
+	
+	.partnerLogo {
+		width: 50px;
+		height: 50px;
+	}
+	
+	.partnerLogoFrame {
+		height: 50px;
+	}
+	
+	.partnerLogo a {
+		height: 50px;
+	}
+	
+	.partnerLogo img {
+		max-width: 50px;
+		max-height: 50px;
+	}
+	
+	/* The blue bands on the partner div tag are made with the before and after pseude selectors. */
+	.inMedia:before {
+		height: 30px;
+	}
+	
+	.inMedia p {
+		margin-top: -30px;
+		font-size: 16px;
+	}
+	
+	@media only screen and (min-width: 480px) {
+		.inMedia p {
+			margin-top: -25px;
+		}
+	}
+	
+	.inMediaLogoContainer {
+		width: 80%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	
+	/* -------------------------------------------------------------------------
+	3.3.  Main dashboard elements
+	------------------------------------------------------------------------- */
+	
+	div.left-sidebar {
+		display: none;
+		width: 100%;
+		z-index: 2;
+	}
+	
+	div.sbLogoContainer {
+		position: relative;
+		float: left;
+		margin: 8px 0 0 10px;
+		width: 110px;
+		height: 47px;
+	}
+	
+	.sideBarHider {
+		display: block;
+		float: right;
+		width: 40px;
+		margin: 12px 10px 0 0;
+		cursor: pointer;
+	}
+	
+	p.userName {
+		font-size: 16px;
+	}
+	
+	div.profilePicture {
+		position: relative;
+		margin: 0.5rem auto 20px auto;
+		width: 150px;
+		height: 150px;
+	}
+	
+	button.profilePicture {
+		font-size: 10px;
+	}
+	
+	button.profilePicture:hover {
+		background-color: rgba(231, 48, 35, 0.7);
+	}
+	
+	div.middle-column {
+		margin-left: 0%;
+	}
+	
+	div.navigation {
+		width: 100%; /* width has to be set, since fixed elements are anchored to the browser window, not to their parent elements. So it doesn't adopt any width automatically and when set will be in proportion towards the window. */
+	}
+	
+	div.roleSelect {
+		width: 60%;
+	}
+	
+	img.menuBars {
+		display: block;
+		width: 40px;
+		margin: 0px 10px 0 0;
+		cursor: pointer;
+	}
+	
+	button.roleSelector-button {
+		display: none;
+	}
+	
+	.roleSelectorIcon {
+		margin: 5px 0 0 0;
+		display: block;
+		cursor: pointer;
+	}
+	
+	.dropdown:hover #roleList {
+		display: none;
+	}
+	
+	#roleList {
+		position: fixed;
+		min-width: inherit;
+		top: 70px;
+		left: 0;
+		right: 0;
+	}
+	
+	#roleList:before {
+		content:'';
+		position: absolute;
+		top: -10px;
+		left: 56px;
+		width: 0;
+		height: 0;
+		border-left: solid 10px transparent;
+		border-right: solid 10px transparent;
+		border-bottom: solid 10px rgba(191, 191, 208, 1);
+	}
+	
+	div.management-box {
+		width: 40%;
+	}
+	
+	.notification-dropdown-content {
+		position: fixed;
+		min-width: inherit;
+		top: 70px;
+		left: 0;
+		right: 0;
+	}
+	
+	.notification-dropdown-content:before {
+		left: calc(60% - 5px);
+	}
+	
+	.setting-dropdown-content {
+		position: fixed;
+		min-width: inherit;
+		top: 70px;
+		left: 0;
+		right: 0;
+	}
+
+	.setting-dropdown-content:before {
+		left: calc(60% + 30px);
+	}
+	
+	.mobileFlex {
+		display: -moz-box;		/* OLD - Firefox 19- (buggy but mostly works) */
+		display: -ms-flexbox;	/* TWEENER - IE 10 */
+		display: -webkit-flex;	/* Chrome & Safari */
+		display: flex;
+		flex-direction: column;
+	}
+	
+	
+	/* -------------------------------------------------------------------------
+	3.4.  Other special div tags
+	------------------------------------------------------------------------- */
+	
+	.microdegree-two-col .col1 {
+		width: 100%;
+		background: rgba(191, 191, 208, 1);
+	}
+	
+	.microdegree-two-col .col2 {
+		width: 100%;
+		padding: 0 20px 0 20px;
+		background: rgba(238, 229, 233, 1);
+	}
+	
+	.microdegree-two-col:before,
+	.microdegree-two-col:after {
+		display: none;
+	}
+	
+	img.microdegree {
+		width: 15px;
+	}
+	
+	.skillBox {
+		width: 98px;
+		height: 98px;
+	}
+	
+	.skillBox p {
+		font-size: 0.8rem;
+	}
+	
+	.eventCounter {
+		font-size: 0.8rem;
+	}
+	
+	.orgBox {
+		height: 75px;
+		line-height: 75px;
+		margin: 10px 0;
+	}
+	
+	.orgBoxLogo {
+		position: relative;
+		float: left;
+		width: 35%;
+	}
+
+	.orgLogoDiv {
+		position: relative;
+		margin: 12.5px auto 0 auto;
+		width: 50px;
+		height: 50px;
+	}
+
+	.orgBoxName {
+		position: relative;
+		float: left;
+		width: 65%;
+	}
+	
+	.orgBoxName p {
+		font-size: 1rem;
+	}
+	
+	img.orgLogo {
+		position: absolute;
+		width: 90%;
+		height: 90%;
+		top: 5%;
+		left: 5%;
+		cursor: pointer;
+	}
+	
+	div.organisationLogo {
+		position: relative;
+		margin: 20px auto;
+		width: 145px;
+		height: 145px;
+	}
+	
+	.tickBoxText {
+		font-size: 10px;
+	}
+	
+	@media only screen and (min-width: 300px) {
+		.tickBoxText {
+			font-size: 12px;
+		}
+	}
+	
+	
+	/* -------------------------------------------------------------------------
+	3.5.  Event information overview box
+	------------------------------------------------------------------------- */
+	
+	.masonry {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
+		column-gap: 1rem;
+		padding-right: 0;
+	}
+	
+	@media only screen and (min-width: 500px) {
+		.masonry {
+			-webkit-column-count: 2;
+			-moz-column-count: 2;
+			column-count: 2;
+			column-gap: 1rem;
+			padding-right: 1rem;
+		}
+	}
+	
+	.eventBox p.title {
+		font-size: 1rem;
+	}
+	
+	.eventBox p.type {
+		font-size: 0.8rem;
+	}
+	
+	.eventBox div.logoBox {
+		width: 50px;
+		height: 50px;
+	}
+	
+	.eventBox p.organiser {
+		font-size: 1rem;
+	}
+	
+	.eventBox div.skillsBox p.skillAnnounce {
+		font-size: 1rem;
+	}
+	
+	.eventBox div.skillsBox p.skill {
+		font-size: 0.8rem;
+		letter-spacing: 0;
+	}
+	
+	.attendingBox {
+		font-size: 0.7rem;
+		letter-spacing: 0;
+	}
+	
+	.eventBox div.ratingRow p {
+		font-size: 0.8rem;
+	}
+	
+	.eventBox div.descriptionRow p {
+		font-size: 0.8rem;
+	}
+	
+	.eventBox div.timeRow p {
+		font-size:  0.8rem;
+	}
+	
+	.eventBox div.addressBox p {
+		font-size: 0.8rem;
+	}
+	
+	.eventBox div.sponsorsRow p {
+		font-size: 0.8rem;
+	}
+	
+	div.sponsorSmallLogo {
+		width: 43px;
+		height: 43px;
+	}
+	
+	@media only screen and (max-width: 300px) {
+		.eventBox p.title {
+			font-size: 0.9rem;
+		}
+		
+		.eventBox p.type {
+			font-size: 0.8rem;
+		}
+		
+		.eventBox div.logoBox {
+			width: 50px;
+			height: 50px;
+		}
+		
+		.eventBox p.organiser {
+			font-size: 0.9rem;
+		}
+		
+		.eventBox div.skillsBox p.skillAnnounce {
+			font-size: 0.8rem;
+		}
+		
+		.eventBox div.skillsBox p.skill {
+			font-size: 0.8rem;
+			letter-spacing: 0;
+		}
+		
+		.attendingBox {
+			font-size: 0.6rem;
+			letter-spacing: 0;
+		}
+		
+		.eventBox div.ratingRow p {
+			font-size: 0.7rem;
+		}
+		
+		.eventBox div.descriptionRow p {
+			font-size: 0.7rem;
+		}
+		
+		.eventBox div.timeRow p {
+			font-size:  0.7rem;
+		}
+		
+		.eventBox div.addressBox p {
+			font-size: 0.7rem;
+		}
+		
+		.eventBox div.sponsorsRow p {
+			font-size: 0.7rem;
+		}
+		
+		div.sponsorSmallLogo {
+			width: 25px;
+			height: 25px;
+		}
+		
+		.eventbox-button {
+			font-size: 0.8rem;
+		}
+	}
+	
+	
+	/* -------------------------------------------------------------------------
+	3.6.  Buttons
+	------------------------------------------------------------------------- */
+	
+	.transparent-button {
+		min-width: inherit;
+		padding: 0 8px;
+		font-size: 8px;
+		letter-spacing: 0;
+	}
+	
+	.call-to-action {
+		min-width: 90px;
+		padding: 6px;
+		font-size: 12px;
+	}
+
+	.call-to-action-neighbour {
+		min-width: 90px;
+		padding: 6px;
+		font-size: 12px;
+	}
+	
+	button,
+	input[type=submit] {
+		padding: 10px 10px;
+		font-size: 10px;
+	}
+	
+	
+	/* -------------------------------------------------------------------------
+	3.6.  Form Elements
+	------------------------------------------------------------------------- */
+	
+	/* Formatting of the div containing the labels and user inputs. */
+	.userInput {
+		margin: 1rem 0 1rem 0.5rem;
+		padding-top: 1.7rem;
+	}
+
+	/* Formatting of the LABELS of the UNSELECTED user inputs. */
+	.userInput label {
+		font-size: 0.7rem;
+	}
+
+	input[type=checkbox] {
+		-ms-transform: scale(1); /* IE */
+		-moz-transform: scale(1); /* FF */
+		-webkit-transform: scale(1); /* Safari and Chrome */
+		-o-transform: scale(1); /* Opera */
+		padding-bottom: 0;
+	}
+
+	.userInput input[type=checkbox] {
+		margin-bottom: auto;
+	}
+
+	.checkboxtext {
+		font-size: 1rem;
+		margin-left: 0.5rem;
+	}
+	
+	textarea {
+		max-width: 170px;
+	}
+
+	/* Formatting of the UNSELECTED input boxes. */
+	input:not([type]),
+	input[type=text],
+	input[type=password],
+	input[type=email],
+	input[type=url],
+	input[type=tel],
+	input[type=number],
+	input[type=search] {
+		height: 1.5rem;
+		font-size: 1rem;
+	}
+	
+	div.ui-datepicker{
+		font-size: 0.5rem;
+	}
+	
+	
+}
