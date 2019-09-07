@@ -1,1 +1,1247 @@
+/* 
+CSS file, partly based on the Materialize framework:
+ * Materialize v0.97.7 (http://materializecss.com)
+ * Copyright 2014-2015 Materialize
+ * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
 
+Table of contents:
+1. Foundations (Font, generally applied rules and root elements and -classes)
+2. Colors & other text layout
+3. Computer- & laptop design
+    3.1.  General tags & dropdowns
+    3.2.  Home page elements (except slideshow elements)
+    3.3.  Other special divs
+	3.4.  Form elements
+    3.5.  Buttons
+4. Tablet design
+	4.1.  General tags
+	4.2.  Home page
+    4.3.  Form elements
+	4.4.  Buttons
+5. Smart phone design
+    5.1.  General tags
+    5.2.  Home page
+    5.3.  Form elements
+    5.4.  Buttons
+*/
+
+
+/* -----------------------------------------------------------------------------
+1. Foundations (Font, generally applied rules and root elements and -classes)
+------------------------------------------------------------------------------*/
+
+/* Setting all HTML elements to have their box-sizing property set to border-box ensures that the padding and border are included in the total width and height of the elements. */
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+	font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    line-height: 2;
+    /* Since the font-size is (1rem =) 10px and the desired line height (measured in pixels) is 20px (for Bootstrap), the line-height property is set to 20px / 10px = 2. */
+}
+
+/* Throught this CSS sheet I will be using the "rem" unit a lot, instead of the "em" unit.
+
+In typography, the name em was originally a reference to the width of the capital letter M, which was often the same as the point size. The main problem with em units in CSS is that they are relative to the font size of their own element. Since the font-size might change from element to element, this means that "1em" is not always equal in size.
+
+Using the unit rem, however, gets rid of this problem; as 1rem = the computed value of font-size on the root element. This means that 1rem equals the font size of the html element. For most browsers the font size of the html element has a default value of 16px. If you want your styling to be consisten along all browsers however, it is necessary to define the font size of the html element. */
+html {
+    font-size: 10px;
+}
+
+body {
+	background-color: rgba(231, 233, 236, 1);
+}
+
+/* Rows are a great way to display related information in a visually coherent way. They can be divided up into columns and prevent any "floated" information from intruding into the current displayed information. (E.g.: when the full 100% width of the viewport is not being used by the displayed columns.) To contain the floated information, the clearfix solution with the pseudo elements (:before and :after) is used. */
+.row {
+    width:100%;
+    position:relative;
+    *zoom: 1; /* For IE 6/7 only: Include this rule to trigger hasLayout and contain floats. */
+}
+
+.row:before,
+.row:after {
+    content: " ";
+    display: table;
+}
+
+.row:after {
+    clear: both;
+}
+
+
+/* -----------------------------------------------------------------------------
+2. Colors & other text layout
+------------------------------------------------------------------------------*/
+
+
+/* ---------------------------------- Colors ----------------------------------- */
+
+.black {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.white {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.whiteText{
+    color: rgba(255, 255, 255, 1);
+}
+
+.platina {
+	background-color: rgba(238, 229, 233, 1);
+}
+
+.platinaText{
+	color: rgba(238, 229, 233, 1);
+}
+
+.grey {
+	background-color: rgba(220, 220, 220, 1);
+}
+
+.greyText {
+    color: rgba(220, 220, 220, 1);
+}
+
+.gold {
+	background-color: rgba(197, 179, 88, 1);
+}
+
+.goldText{
+	color: rgba(197, 179, 88, 1);
+}
+
+.silver {
+	background-color: rgba(231, 233, 236, 1);
+}
+
+.silverText{
+	color: rgba(231, 233, 236, 1);
+}
+
+.pink {
+    background-color: rgba(255, 205, 149, 1);
+}
+
+.pinkText {
+    color: rgba(255, 205, 149, 1);
+}
+
+.green {
+    background-color: rgba(191, 255, 157, 1);
+}
+
+.greenText {
+    color: rgba(191, 255, 157, 1);
+}
+
+.red {
+    background-color: rgba(203, 62, 66, 1);
+}
+
+.redText {
+    color: rgba(203, 62, 66, 1);
+}
+
+/* ------------------------------- Text position ------------------------------- */
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+/* --------------------------------- Text font --------------------------------- */
+
+.bold {
+    font-weight: 700;
+}
+
+.italic {
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+/* ---------------------------- Plain text elements ---------------------------- */
+
+.textContent {
+	margin-left: 4rem;
+}
+
+.textTitle {
+	margin: 2rem 0;
+	text-align: center;
+}
+
+.textSubTitle {
+	margin: 3rem 0 1rem 0;
+}
+
+.textLevelOne {
+	margin: 0;
+	padding-top: 0.5rem;
+    text-align: justify;
+}
+
+.textLevelTwo {
+	margin: 0 0 1rem 2rem;
+	padding-top: 0.5rem;
+    text-align: justify;
+}
+
+.textLevelThree {
+	margin: 0 0 1rem 3rem;
+	padding-top: 0.5rem;
+    text-align: justify;
+}
+
+.textLevelFour {
+	margin: 0 0 1rem 4rem;
+	padding-top: 0.5rem;
+    text-align: justify;
+}
+
+.textLevelFive {
+	margin: 0 0 1rem 5rem;
+	padding-top: 0.5rem;
+    text-align: justify;
+}
+
+.textList {
+    margin-bottom: 1rem;
+    padding-left: 3rem;
+}
+
+.textList li {
+	display: list-item;
+    list-style-type: none;
+    font-size: 1.4rem;
+    font-style: italic;
+}
+
+/* --------------------------- Special text elements --------------------------- */
+
+.success {
+	color: rgba(34, 139, 34, 1);
+}
+
+.error {
+    color: rgba(204, 100, 100, 1);
+}
+
+.error.fade {
+	-webkit-animation-name: fade;
+    -webkit-animation-iteration-count: once;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 5s;
+	-webkit-animation-fill-mode: forwards;
+    animation-name: fade;
+    animation-iteration-count: once;
+    animation-timing-function: ease-out;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes fade {
+    0% {color: rgba(204, 0, 0, 1);}
+    100% {color: rgba(204, 0, 0, 0);}
+}
+
+@-webkit-keyframes fade {
+    0% {color: rgba(204, 0, 0, 1);}
+    100% {color: rgba(204, 0, 0, 0);}
+}
+
+@-moz-keyframes fade {
+    0% {color: rgba(204, 0, 0, 1);}
+    100% {color: rgba(204, 0, 0, 0);}
+}
+
+.textLink,
+.textLink:visited {
+	margin: 0 1rem;
+    font-size: 1.3rem;
+	text-decoration: underline;
+}
+
+.textLink:hover {
+	text-decoration: underline;
+    color: rgba(197, 179, 88, 1) !important;
+}
+
+
+/* -----------------------------------------------------------------------------
+3. Computer- & laptop design
+------------------------------------------------------------------------------*/
+
+/* Preparing the width of elements within one row. The screen width (of 100%) is divided into 12 colums. Each element in a row should then take one of the col classes below. If an element takes class "col-3", it means it is three colums wide. Therefore the sum of all elements in a row should always be 24. If it is less, there will be open space, if it is more, there will be a horizontal scroll bar. */
+@media only screen and (min-width: 993px) {
+    [class*="col-"] {
+		position: relative;
+		float: left;
+    }
+    /*
+    [class*='col-']:last-of-type {
+        padding-right: 0;
+    }
+    */
+    
+    .col-l1 {width: 8.33333%;}
+    .col-l2 {width: 16.66666%;}
+    .col-lfive {width: 20%;}
+    .col-l3 {width: 25%;}
+    .col-l4 {width: 33.33333%;}
+    .col-l5 {width: 41.66666%;}
+    .col-l6 {width: 50%;}
+    .col-l7 {width: 58.33333%;}
+    .col-l8 {width: 66.66666%;}
+    .col-l9 {width: 75%;}
+    .col-l10 {width: 83.33333%;}
+    .col-l11 {width: 91.66666%;}
+    .col-l12 {width: 100%;}
+}
+
+
+/* -----------------------------------------------------------------------------
+3.1.  General tags & dropdowns
+----------------------------------------------------------------------------- */
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+	font-weight: 700;
+	letter-spacing: 0.1rem;
+    word-spacing: 0.3rem;
+    margin-bottom: 3rem;
+}
+
+p {
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 1);
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1) !important;
+}
+
+a.disabled {
+	cursor: default;
+    pointer-events: none;
+}
+
+
+/* The dropdown class should be applied on an element (div, span, li, ul) containing a) the dropdown button, b) the dropdown content div, c) the dropdown links (which could or could not be in a list structure) and d) the divider class, which is used to seperate the dropdown content into logical blocks. */
+.dropdown {
+    position: relative;
+    display: block;
+    float: left;
+}
+
+/* The div containing all the elements which should be shown when hovered over or clicked on the dropdown button. The positioning is absolute, which makes it appear at the bottom of the dropdown element (unless top or bottom values are set) as long as it is placed under the triggering dropdown button. Left and right values can be used in order to further position the dropdown content, but beware: all relative values will refer to the parent element, which is the dropdown and since dropdown has no fixed width, the width is determined by the only visible element placed in it: the dropdown button or the dropdown image. Since the buttons' width is setermined by the text inside, a general value for left or right would make no sense. */
+.dropdownContent {
+    display: none;
+    position: absolute;
+    min-width: 100%;
+    max-width: 100%;
+    background-color: rgba(231, 233, 236, 1);
+    z-index: 1; /* To make sure it is shown over the other content. */
+}
+
+/* CSS logic: if the "dropdown" is hovered over, apply the following styling to the "dropdownContent", which is a child of the hovered over "dropdown": */
+.dropdown:hover .dropdownContent {
+    display: block;
+}
+
+/* CSS logic: if the "dropdown" is hovered over, apply the following styling to the "drop-button", which is a child of the hovered over "dropdown": */
+.dropdown:hover .homeDropButton {
+    background-color: rgba(231, 233, 236, 1);
+}
+
+/* The dropdown links, which will redirect you to another page when clicked, if their display is not set to block, then it will inherit the display of the parent when it is rendered, which has a display of "none". Even when the display of the parent changes, this doesn't change the display value of the kids, so therefore the display should be specified beforehand.
+Moreover, the "a" tag is an inline level element. Inline elements do not start on a new line and only take up as much width as necessary, whereas block-level elements always start on a new line and take up the full width available (stretches out to the left and right as far as it can). So in order to make the entire content of the <li> item a link, the a tags need to be displayed as block elements, not as an inline element. Inline-block elements are basically inline elements of which the width and the height CAN be set (unlike normal inline elements). Therefore, the same effect could be reached with inline-block value of the display property, but it would require the exact width and height to be set to fill up an entire <li> item. */
+.dropdownContent a,
+.dropdownContent li{
+    display: block;
+}
+
+.dropdownContent a {
+    padding: 1.5rem 0.5rem 1.5rem 2rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+/* CSS logic: if a link, which is the child of "dropdownContent" is hovered over, apply the following styling: */
+.dropdownContent a:hover {
+    background-color:  rgba(220, 220, 220, 1);
+}
+
+/* The divider's display should also be set, just like the dropdown links' display value. */
+.divider {
+	width: 100%;
+	height: 0.1rem !important;
+	margin: 0.5rem 0 !important;
+	background-color: rgba(197, 179, 88, 1);
+}
+
+
+/* -----------------------------------------------------------------------------
+3.2.  Home page elements (except slideshow elements)
+----------------------------------------------------------------------------- */
+
+/* The wrapper defined below here is by default 100% the hight as the viewport and 100% the width of the viewport. However, it will just extend further down if the content stretches beyond these measurements.
+Since a percentage measurement sizes all elements to the given percentage of the containing block, I can now express the measurements of every content block as a percentage of the viewport and the measurements of the content blocks within as a percentage of the containing percentage of the viewport. If I exceed a total of 100% in height, the screen will get a vertical scroll bar. If I exceed 100% in width, I will get a horizontal scroll bar (which should definitely be avoided at all times)!
+The huge advantage of this is that it can make all the elements both proportionate and responsive corresponding to the viewport size, as long as they can be consistently expressed in percentages! Another huge advantage is that you can narrow the width of all your content on the page very easily by reducing the width of the wrapper by a certain percentage. If you then want to centre the content, simply add a left property for half of this percentage [e.g.: if you reduced the width of the wrapper by 20% (so set to 80%), then you add a left property of 10% to centre it all]. */
+.wrapper {
+    position:absolute;
+    min-height: 100%;
+    max-width: 100%;
+	height: 100%;
+    width: 100%;
+    z-index: -2;
+}
+
+#wrapper:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.homeImg {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.navbar {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    width: 100%;
+}
+
+.navbar > li {
+    display: inline;
+    width: 14.2857%;
+}
+
+.navbar a {
+    display: inline-block;
+    width: 100%;
+}
+
+.homepageTitle {
+	position: absolute;
+	width: 100%;
+	top: 15%;
+	text-align: center;
+	color: rgba(197, 179, 88, 1);
+	font-size: 6rem;
+	font-weight: 700;
+	letter-spacing: 0.3rem;
+	text-transform: uppercase;
+}
+
+.homepageSubTitle {
+	position: absolute;
+	width: 100%;
+	top: 28%;
+	text-align: center;
+	color: rgba(255, 255, 255, 1);
+	text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 0.2rem;
+}
+
+.topShadow {
+	-webkit-box-shadow: 0px -5px 30px 0px rgba(231, 233, 236, 1);
+	-moz-box-shadow: 0px -5px 30px 0px rgba(231, 233, 236, 1);
+	box-shadow: 0px -5px 30px 20px rgba(231, 233, 236, 1);
+}
+
+.homeContent {
+	position: absolute;
+	width: 100%;
+	top: 100%;
+}
+
+.valuePropositionBox {
+	padding: 4rem 3rem;
+    height: 30rem;
+}
+
+.valuePropositionTitle {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-align: center;
+	font-weight: 700;
+	letter-spacing: 0.1rem;
+}
+
+.valuePropositionParagraph {
+    margin: 2rem;
+    text-align: center;
+}
+
+.valuePropositionButtonFrame {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+}
+
+.valuePropositionButton {
+    position: relative;
+    left: -50%;
+}
+
+.footer {
+	background-color: rgba(51, 51, 51, 1);
+}
+
+.footer p {
+	padding: 1rem 0;
+	color: rgba(238, 229, 233, 1);
+	text-align: center;
+}
+
+
+/* -----------------------------------------------------------------------------
+3.3.  Other special divs
+----------------------------------------------------------------------------- */
+
+.contentZone {
+    margin-bottom: 5rem;
+}
+
+.centerContent {
+	padding: 5rem !important;
+	float: none !important; /* To make sure margin: auto works. */
+	margin: 5rem auto;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.contentZone:last-of-type {
+    margin-bottom: 0;
+}
+
+.customCell {
+    min-height: 2.2rem;
+    padding-top: 0.5rem;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+}
+
+/* Coockie warning div. */
+.cookieWarning {
+	position: fixed;
+	z-index: 3;
+	width: 100%;
+	top: 85%;
+	height: 10%;
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+.cookieWarning p {
+	padding-top: 1.5%;
+	color: rgba(238, 229, 233, 1);
+	text-align: center;
+}
+
+.cookieAcceptButton {
+	position: fixed;
+	top: 20%;
+	right: 10%;
+	border-radius: 0.5rem !important;
+	background-color: rgba(245, 245, 0, 1) !important;
+	color: rgba(0, 0, 0, 1) !important;
+}
+
+.lone-message {
+	padding: 2rem !important;
+	float: none !important; /* To make sure margin: auto works. */
+	margin: 5rem auto;
+	background-color: rgba(238, 229, 233, 1);
+}
+
+.formulaFrame {
+    margin: 2rem 0;
+}
+
+.formula {
+    display: block;
+    margin: 1.5rem auto;
+}
+
+.noPower {
+    height: 2.3rem;
+}
+
+.noBrackets {
+    height: 2.1rem;
+}
+
+.singleLine {
+    height: 2.5rem;
+}
+
+.doubleLine {
+    height: 5.5rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+3.4.  Form elements
+----------------------------------------------------------------------------- */
+
+/* Formatting of the div containing user inputs and potentially the labels. */
+.userInput {
+	display: block;
+	position: relative;
+	padding: 2.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+/* Clearfix: to make sure that the userInput divs contain all elements inside, including the floating elements. Comes in handy when applying the grid layout to child divs of the userInput (for example when putting a text input and dropdown next to one another), as the children then start floating automatically. */
+.userInput::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Some UserInput divs will not require extra padding on top for the label, such as tickboxes and radiobuttons. */
+.noAddedPadding {
+	padding: 0.5rem !important;
+}
+
+/* Some UserInput divs will not require extra padding on top for the label, such as tickboxes and radiobuttons. */
+.addedPadding {
+	padding-bottom: 2rem !important;
+}
+
+/* -------------------------------- Text Field --------------------------------- */
+
+input:not([type]),
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=tel],
+input[type=number],
+input[type=search] {
+	width: 100%;
+	height: 3.5rem;
+	padding-left: 0.5rem;
+	outline: none; /* Removes the standard "border" of the input. */
+	border: 0.1rem solid rgba(113, 113, 113, 1);
+	background-color: rgba(231, 233, 236, 1);
+	font-size: 1.3rem;
+	transition: all 0.3s;
+}
+
+input::placeholder {
+	font-size: 1.3rem;
+    color: rgba(113, 113, 113, 1);
+}
+
+/* Formatting of the SELECTED input boxes. */
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea:focus:not([readonly]) {
+	border: 0.1rem solid rgba(197, 179, 88, 1);
+	box-shadow: 0 0 0 0.05rem rgba(197, 179, 88, 1);
+}
+
+/* Formatting of the VALID input boxes. */
+input:not([type]).valid,
+input:not([type]):focus.valid,
+input[type=text].valid,
+input[type=text]:focus.valid,
+input[type=password].valid,
+input[type=password]:focus.valid,
+input[type=email].valid,
+input[type=email]:focus.valid,
+input[type=url].valid,
+input[type=url]:focus.valid,
+input[type=tel].valid,
+input[type=tel]:focus.valid,
+input[type=number].valid,
+input[type=number]:focus.valid,
+input[type=search].valid,
+input[type=search]:focus.valid,
+textarea.valid,
+textarea:focus.valid {
+	border: 0.1rem solid rgba(34, 139, 34, 1);
+	box-shadow: 0 0 0 0.05rem rgba(34, 139, 34, 1);
+}
+
+/* Formatting of the INVALID input boxes. */
+input:not([type]).invalid,
+input:not([type]):focus.invalid,
+input[type=text].invalid,
+input[type=text]:focus.invalid,
+input[type=password].invalid,
+input[type=password]:focus.invalid,
+input[type=email].invalid,
+input[type=email]:focus.invalid,
+input[type=url].invalid,
+input[type=url]:focus.invalid,
+input[type=tel].invalid,
+input[type=tel]:focus.invalid,
+input[type=number].invalid,
+input[type=number]:focus.invalid,
+input[type=search].invalid,
+input[type=search]:focus.invalid,
+textarea.invalid,
+textarea:focus.invalid {
+	border: 0.1rem solid rgba(204, 0, 0, 1);
+	box-shadow: 0 0 0 0.05rem rgba(204, 0, 0, 1);
+}
+
+/* ------------------------------ Select Field ------------------------------ */
+
+/* Selects should not display, but in cae the browser displays them, make sure there is some formatting. */
+select {
+	display: none;
+	width: 100%;
+	height: 3.5rem;
+	padding-left: 0.5rem;
+	outline: none; /* Removes the standard "border" of the input. */
+	border: 0.1rem solid rgba(113, 113, 113, 1);
+	background-color: rgba(231, 233, 236, 1);
+	font-size: 1.3rem;
+	transition: all 0.3s;
+}
+
+/* Make sure that the visual select and the actual select are displayed together in case the actual select is showing. */
+.selectWrapper {
+	position: relative;
+}
+
+/* Extra formatting of the displayed (visual) select inputs. */
+input[type=text].selectInput {
+	display: block;
+	position: relative;
+	cursor: pointer;
+}
+
+.selectWrapper span.caret {
+	position: absolute;
+	right: 0.5rem;
+	top: 1rem;
+	font-size: 1rem;
+	z-index: 1; /* To make sure it is not hidden by the select itself. */
+}
+
+.selectDropdown {
+    display: none;
+    position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	border: 0.1px solid rgba(197, 179, 88, 1);
+    background-color: rgba(231, 233, 236, 1);
+    z-index: 2; /* To make sure it is shown over the other content (including the caret). */
+}
+
+li.option {
+    display: block;
+	height: 3.5rem;
+    margin: 0.1rem; /* Just to prevent the dropdown borders from disappearing when hovering over the options. */
+    padding: 1.1rem 0 1.1rem 0.5rem;
+    font-size: 1.3rem;
+    line-height: 1.3rem; /* Make sure te line-height is the same as the font-size, so the text can be decently centered with the padding and the height properties. The height - (2 x padding) = font-size and line-height. */
+}
+
+li.option:hover {
+    background-color: rgba(220, 220, 220, 1);
+}
+
+/* -------------------------------- Textarea -------------------------------- */
+
+textarea {
+	resize: none;
+	width: 100%;
+    min-height: 12em;
+	padding: 0.5rem;
+    outline: none;
+	border: 0.1rem solid rgba(113, 113, 113, 1);
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: rgba(231, 233, 236, 1);
+	font-size: 1.3rem;
+    line-height: 1.5rem;
+}
+
+textarea::placeholder {
+	padding-top: 0.5rem;
+	font-size: 1.3em;
+	text-align: center;
+}
+
+textarea::-webkit-scrollbar {
+    width: 1rem;
+}
+
+textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0.6rem rgba(0,0,0,0.3);
+    border-radius: 0.5rem;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 0.6rem rgba(0,0,0,0.5);
+    border-radius: 0.5rem;
+}
+
+.charCountDown {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.4rem;
+	font-size: 1.2rem;
+    line-height: 1.2rem;
+	color: rgba(113, 113, 113, 1);
+}
+
+/* ------------------------- Checkbox and Radio Button ------------------------- */
+
+/* Make sure that the check box and the check box text are displayed together. */
+.checkRadioWrapper {
+	position: relative;
+}
+
+input[type=checkbox],
+input[type=radio] {
+	-ms-transform: scale(1.1); /* IE */
+	-moz-transform: scale(1.1); /* FF */
+	-webkit-transform: scale(1.1); /* Safari and Chrome */
+	-o-transform: scale(1.1); /* Opera */
+    float: left; /* To make sure a margin can be added to the top so the text and the radiobutton are nicely vertically aligned. */
+    margin-top: 0.4rem;
+	cursor: pointer;
+}
+
+.checkboxText,
+.radioText {
+	font-size: 1.3rem;
+	margin-left: 0.5rem;
+	cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* -------------------------------- Datepicker --------------------------------- */
+
+div.ui-datepicker{
+	font-size: 1rem;
+}
+
+/* ---------------------------------- Range ------------------------------------ */
+
+input[type=range] {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    height: 1.5rem;
+	margin: 0;
+	padding: 0;
+	border: none;
+    outline: none; /* Remove outline */
+    background: rgba(51, 51, 51, 0.5);
+	background-color: rgba(231, 233, 236, 1);
+	border-radius: 1.5rem;
+}
+
+/* The slider handle (use webkit (Chrome, Opera, Safari, Edge) and moz (Firefox) to override default look) */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+	border-radius: 50%;
+    background: rgba(197, 179, 88, 1);
+}
+
+input[type=range]::-moz-range-thumb {
+    width: 1.5rem;
+    height: 1.5rem;
+	border-radius: 50%;
+	border-color: rgba(197, 179, 88, 1);
+	background: rgba(197, 179, 88, 1);
+}
+
+input[type=range]::-moz-range-track {
+	visibility: hidden;
+}
+
+input[type=range]:hover {
+    cursor: pointer;
+	background-color: rgba(231, 233, 236, 0.7);
+}
+
+.rangeValue {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+	font-size: 1.2rem;
+	color: rgba(113, 113, 113, 1);
+}
+
+/* --------------------------------- Label ---------------------------------- */
+
+/* Formatting of the LABELS of the UNSELECTED user inputs. */
+.userInput label {
+	color: rgba(113, 113, 113, 1);
+	position: absolute;
+	top: 0.5rem;
+	left: 0.5rem;
+	font-size: 1.2rem;
+	cursor: text;
+	transition: .2s ease-out;
+}
+
+@media only screen and (max-width: 1037px) {
+    .userInput label {
+        font-size: 1.1rem;
+    }
+}
+
+/* Formatting of the LABELS of the SELECTED input boxes. */
+input:not([type]):focus:not([readonly]) ~ label,
+input[type=text]:focus:not([readonly]) ~ label,
+input[type=password]:focus:not([readonly]) ~ label,
+input[type=email]:focus:not([readonly]) ~ label,
+input[type=url]:focus:not([readonly]) ~ label,
+input[type=tel]:focus:not([readonly]) ~ label,
+input[type=number]:focus:not([readonly]) ~ label,
+input[type=search]:focus:not([readonly]) ~ label,
+textarea:focus:not([readonly]) ~ label {
+	color: rgba(24, 163, 164, 1);
+	/* The following values are set to transition the labels inside text boxes from being a placeholder to being a label:
+	top: 0;
+	left: 0; */
+}
+
+/* Formatting of the LABELS of the VALID input boxes. */
+input:not([type]).valid ~ label,
+input:not([type]):focus.valid ~ label,
+input[type=text].valid ~ label,
+input[type=text]:focus.valid ~ label,
+input[type=password].valid ~ label,
+input[type=password]:focus.valid ~ label,
+input[type=email].valid ~ label,
+input[type=email]:focus.valid ~ label,
+input[type=url].valid ~ label,
+input[type=url]:focus.valid ~ label,
+input[type=tel].valid ~ label,
+input[type=tel]:focus.valid ~ label,
+input[type=number].valid ~ label,
+input[type=number]:focus.valid ~ label,
+input[type=search].valid ~ label,
+input[type=search]:focus.valid ~ label,
+textarea.valid ~ label,
+textarea:focus.valid ~ label {
+	color: rgba(34, 139, 34, 1);
+}
+
+/* Formatting of the LABELS of the INVALID input boxes. */
+input:not([type]).invalid ~ label,
+input:not([type]):focus.invalid ~ label,
+input[type=text].invalid ~ label,
+input[type=text]:focus.invalid ~ label,
+input[type=password].invalid ~ label,
+input[type=password]:focus.invalid ~ label,
+input[type=email].invalid ~ label,
+input[type=email]:focus.invalid ~ label,
+input[type=url].invalid ~ label,
+input[type=url]:focus.invalid ~ label,
+input[type=tel].invalid ~ label,
+input[type=tel]:focus.invalid ~ label,
+input[type=number].invalid ~ label,
+input[type=number]:focus.invalid ~ label,
+input[type=search].invalid ~ label,
+input[type=search]:focus.invalid ~ label,
+textarea.invalid ~ label,
+textarea:focus.invalid ~ label {
+	color: rgba(204, 0, 0, 1);
+}
+
+
+/* -----------------------------------------------------------------------------
+3.5.  Buttons
+----------------------------------------------------------------------------- */
+
+button,
+input[type=submit] {
+    display: inline;
+    zoom: 1; *display: inline;
+    position: relative;
+	min-width: 10rem;
+    padding: 1.1rem;
+    background-color: rgba(197, 179, 88, 1);
+    outline: none; /* Removes the default button border. */
+    border: 0.1rem solid transparent;
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+    color: rgba(231, 233, 236, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    word-spacing:  0.3rem;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+button:hover,
+input[type=submit]:hover {
+    cursor: pointer;
+    background-color: rgba(231, 233, 236, 1);
+    border: 0.1rem solid rgba(197, 179, 88, 1);
+    color: rgba(197, 179, 88, 1);
+}
+
+.userInput input[type=submit] {
+	width: 100%;
+}
+
+.oval {
+    border-radius: 50%;
+}
+
+.call-to-action {
+	width: 15rem;
+    margin: 1rem;
+}
+
+.neighbour {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: 1px solid rgba(231, 233, 236, 1) !important;
+}
+
+.neighbour:hover {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.homeDropButton {
+    min-width: 100% !important;
+    padding: 1.85rem 0.5rem;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    font-weight: 700;
+    color: rgba(197, 179, 88, 1);
+}
+
+.homeDropButton:hover {
+    border: none;
+    background-color: rgba(231, 233, 236, 1);
+}
+
+
+
+/* -----------------------------------------------------------------------------
+4. Tablet design
+----------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+	
+    [class*="col-"] {
+        position: relative;
+        float: left;
+        width: 100%;
+    }
+    
+    .col-m1 {width: 8.33333%;}
+    .col-m2 {width: 16.66666%;}
+    .col-mfive {width: 20%;}
+    .col-m3 {width: 24.99999%;}
+    .col-m4 {width: 33.33333%;}
+    .col-m5 {width: 41.66666%;}
+    .col-m6 {width: 50%;}
+    .col-m7 {width: 58.33333%;}
+    .col-m8 {width: 66.66666%;}
+    .col-m9 {width: 74.99999%;}
+    .col-m10 {width: 83.33333%;}
+    .col-m11 {width: 91.66666%;}
+    .col-m12 {width: 100%;}
+    
+    
+    /* This will change all the "rem" sizes of the elements which are styled with this unit. */
+    html {
+        font-size: 9px;
+    }
+    
+    /* -------------------------------------------------------------------------
+	4.1.  General tags
+	------------------------------------------------------------------------- */
+    
+	
+	/* -------------------------------------------------------------------------
+	4.2.  Home page
+	------------------------------------------------------------------------- */
+	
+    .homeDropButton {
+        font-size: 1.1rem;
+    }
+    
+	/* -------------------------------------------------------------------------
+	4.3.  Form elements
+	------------------------------------------------------------------------- */
+	
+    /* -------------------------------- Label --------------------------------- */
+    
+    .userInput label {
+        font-size: 1.2rem;
+    }
+	
+    
+	/* -------------------------------------------------------------------------
+	4.4.  Buttons
+	------------------------------------------------------------------------- */
+    
+    
+}
+
+
+
+/* -----------------------------------------------------------------------------
+5. Smart phone design
+----------------------------------------------------------------------------- */
+
+@media only screen and (max-width: 600px) {
+    
+    [class*="col-"] {
+        position: relative;
+        float: left;
+        width: 100%;
+    }
+    
+    .col-s1 {width: 8.33333%;}
+    .col-s2 {width: 16.66666%;}
+    .col-sfive {width: 20%;}
+    .col-s3 {width: 24.99999%;}
+    .col-s4 {width: 33.33333%;}
+    .col-s5 {width: 41.66666%;}
+    .col-s6 {width: 50%;}
+    .col-s7 {width: 58.33333%;}
+    .col-s8 {width: 66.66666%;}
+    .col-s9 {width: 74.99999%;}
+    .col-s10 {width: 83.33333%;}
+    .col-s11 {width: 91.66666%;}
+    .col-s12 {width: 100%;}
+    
+    
+    /* This will change all the "rem" sizes of the elements which are styled with this unit. Even finer control can be maintained over elements by nested media queries. */
+    html {
+        font-size: 8px;
+    }
+	
+	@media only screen and (max-width: 400px) {
+		html {
+			font-size: 7px;
+		}
+	}
+    
+	
+	/* -------------------------------------------------------------------------
+	5.1.  General tags
+	------------------------------------------------------------------------- */
+	
+	
+	/* -------------------------------------------------------------------------
+	5.2.  Home page
+	------------------------------------------------------------------------- */
+	
+    .homeDropButton {
+        font-size: 1rem;
+    }
+    
+    @media only screen and (max-width: 468px) {
+        .homeDropButton {
+            font-size: 0.8rem;
+        }
+    }
+    
+    @media only screen and (max-width: 351px) {
+        .homeDropButton {
+            font-size: 0.6rem;
+        }
+    }
+    
+    
+	/* -------------------------------------------------------------------------
+	5.3.  Form elements
+	------------------------------------------------------------------------- */
+    
+    
+    @media only screen and (max-width: 250px) {
+        .userInput {
+            padding: 3.5rem 0.5rem 0.5rem 0.5rem;
+            margin-bottom: 1rem;
+        }
+    }
+    
+    /* ----------------------- Checkbox and Radio Button ----------------------- */
+    
+    input[type=checkbox],
+    input[type=radio] {
+        -ms-transform: scale(0.8); /* IE */
+        -moz-transform: scale(0.8); /* FF */
+        -webkit-transform: scale(0.8); /* Safari and Chrome */
+        -o-transform: scale(0.8); /* Opera */
+        margin-top: 0.2rem;
+    }
+    
+	@media only screen and (max-width: 400px) {
+		input[type=checkbox],
+        input[type=radio] {
+            margin-top: 0.1rem;
+        }
+	}
+    
+    /* -------------------------------- Label --------------------------------- */
+    
+    .userInput label {
+        font-size: 1.3rem;
+    }
+    
+    @media only screen and (max-width: 250px) {
+        .userInput label {
+            line-height: 1.3rem;
+        }
+    }
+	
+    
+	/* -------------------------------------------------------------------------
+	5.4.  Buttons
+	------------------------------------------------------------------------- */
+    
+    
+}
