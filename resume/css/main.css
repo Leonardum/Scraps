@@ -1,0 +1,224 @@
+/*
+
+Table of contents:
+1. General computer- & laptop design set-up
+2. Resume elements
+
+*/
+
+
+    
+/* --------------------------------------------------------------------
+1. General computer- & laptop design set-up
+-------------------------------------------------------------------- */
+
+/* Setting a font-size for the html element, makes sure I can precisely determine the size of elements in all browsers with the "rem" unit. Using rem is very handy when making websites more responsive. Moreover, you can adjust all rem measurements by adjusting just the html font-size. */
+html {
+    font-size: 10px;
+}
+
+/* Setting all HTML elements to have their box-sizing property set to border-box ensures that the padding and border are included in the total width and height of the elements. */
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+	font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Preparing the width of elements within one row for screens which display a minimum of 768 pixels in the width (every device larger than a tablet). The screen width (of 100%) is divided into 20 colums. Each element in a row should then take one of the col classes below. If an element takes class "col-3", it means it is three colums wide. Therefore the sum of all elements in a row should always be 20. If it is less, there will be open space, if it is more, there will be a horizontal scroll bar. */
+@media only screen and (min-width: 993px) {
+    [class*="col-"] {
+		position: relative;
+		float: left;
+    }
+    
+    [class*='col-']:last-of-type {
+        padding-right: 0;
+    }
+    
+    .col-1 {width: 5%;}
+    .col-2 {width: 10%;}
+    .col-3 {width: 15%;}
+    .col-4 {width: 20%;}
+    .col-5 {width: 25%;}
+    .col-6 {width: 30%;}
+    .col-7 {width: 35%;}
+    .col-8 {width: 40%;}
+    .col-9 {width: 45%;}
+    .col-10 {width: 50%;}
+    .col-11 {width: 55%;}
+    .col-12 {width: 60%;}
+    .col-13 {width: 65%;}
+    .col-14 {width: 70%;}
+    .col-15 {width: 75%;}
+    .col-16 {width: 80%;}
+    .col-17 {width: 85%;}
+    .col-18 {width: 90%;}
+    .col-19 {width: 95%;}
+    .col-20 {width: 100%;}
+}
+
+body {
+	background-color: rgba(255, 255, 255, 1);
+    margin-top: 7rem;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+
+/* --------------------------------------------------------------------
+2. Resume
+-------------------------------------------------------------------- */
+
+/* Center the content. */
+div.centerPage{
+	width: 100rem;
+	margin: auto;
+}
+
+div.titleArea {
+	width: 100%;
+	height: 16rem;
+	padding-top: 1rem;
+    font-size: 0; /* To make sure that the width of the inline-block columns within this div can sum to 100%, without them being pushed over 100% with by the word spacing of the white space in between the code. */
+}
+
+div.titleCol1 {
+    display: inline-block; /* The reason I use inline-block, rather than left-floating columns, is that the browser print-to-pdf function, does not seem to be able to handle that correctly. */
+    width: 70%;
+    vertical-align: top; /* Prevents inline-block elements start at the same height, rather than at the same base-line. */
+}
+
+div.titleCol2 {
+    display: inline-block; /* The reason I use inline-block, rather than left-floating columns, is that the browser print-to-pdf function, does not seem to be able to handle that correctly. */
+    width: 30%;
+    vertical-align: top; /* Prevents inline-block elements start at the same height, rather than at the same base-line. */
+}
+
+#name {
+	font-size: 2.5rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+#what {
+	font-size: 2.2rem;
+	color: rgba(20, 121, 190, 1);
+	font-weight: 700;
+}
+
+div.contact {
+    display: inline;
+	margin-right: 1.5rem;
+	font-size: 1.3rem;
+}
+
+img.picture {
+    float: right;
+	width: 15rem;
+	margin-right: 7.5rem;
+	border-radius: 50%;
+}
+
+span.label {
+	font-size: inherit;
+	font-weight: 700;
+	color: rgba(20, 121, 190, 1);
+}
+
+div.content {
+	position: relative;
+	text-align: justify;
+    font-size: 0; /* To make sure that the width of the inline-block columns within this div can sum to 100%, without them being pushed over 100% with by the word spacing of the white space in between the code. */
+}
+
+div.col1 {
+    display: inline-block; /* The reason I use inline-block, rather than left-floating columns, is that the browser print-to-pdf function, does not seem to be able to handle that correctly. */
+    width: 65%;
+    margin-right: 5%;
+    vertical-align: top; /* Prevents inline-block elements start at the same height, rather than at the same base-line (= bottom). */
+}
+
+div.col2 {
+    display: inline-block; /* The reason I use inline-block, rather than left-floating columns, is that the browser print-to-pdf function, does not seem to be able to handle that correctly. */
+    width: 30%;
+    vertical-align: top; /* Prevents inline-block elements start at the same height, rather than at the same base-line (= bottom). */
+}
+
+p.title {
+	padding: 0 0 0.5rem 0;
+	border-bottom: solid 0.3rem rgba(20, 121, 190, 1);
+	font-size: 2rem;
+	color: rgba(20, 121, 190, 1);
+	text-transform: uppercase;
+}
+
+div.section {
+	padding: 1.5rem 0;
+	border-bottom: dashed 0.1rem rgba(191, 191, 208, 1);
+}
+
+div.section:first-of-type {
+	padding: 0.75rem 0 1.5rem 0;
+}
+
+div.section:last-of-type {
+    border-bottom: none;
+}
+
+p.sectionTitle {
+	font-size: 1.8rem;
+}
+
+p.sectionSubTitle {
+	font-size: 1.5rem;
+	color: rgba(20, 121, 190, 1);
+}
+
+img.calendar {
+	width: 1.2rem;
+	margin-right: 0.5rem;
+}
+
+p.timeLine {
+	display: inline-block;
+	margin-right: 3rem;
+	font-size: 1.2rem;
+	color: rgba(51, 51, 51, 1);
+}
+
+img.location {
+	position: absolute;
+	left: 22rem;
+	width: 0.9rem;
+	margin-top: 0.1rem;
+}
+
+p.location {
+	position: absolute;
+	display: inline-block;
+	left: 24rem;
+	font-size: 1.2rem;
+	color: rgba(51, 51, 51, 1);
+}
+
+p.description {
+	font-size: 1.3rem;
+}
+
+ul.list {
+	margin-left: 4rem;
+}
+
+li.listItem {
+    display: list-item;
+	font-size: 1.3rem;
+}
